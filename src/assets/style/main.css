@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: "Tuffy", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  transition: .3s all;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #f8f8f8;
+}
+
+main {
+  margin: 0 30px;
+}
+
+.weatherBlock {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.charts {
+  display: flex;
+  gap: 30px;
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 15px;
+  min-height: 300px;
+  background: rgba(191, 191, 191, 0.050);
+  /* opacity: 60%; */
+  border-radius: 7px;
+  gap: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.buttonGroup button {
+  flex: 1;
+  padding: 3px;
+  border-radius: 7px;
+  background: none;
+  border: 1px solid rgba(20, 98, 64, 1);
+  color: #f8f8f8;
+}
+
+.buttonGroup button:hover {
+  background: rgba(20, 98, 64, 0.5);
+}
+
+
+.buttonGroup button.active {
+  background: rgba(20, 98, 64, 1);
+}
+
+@media (max-width: 768px) {
+  .charts {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .chart {
+    padding: 10px;
+  }
+}
+
+/* LOADER */
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1;
+  --c: linear-gradient(#f8f8f8 0 0);
+  --r1: radial-gradient(farthest-side at bottom, #f8f8f8 93%, #f8f8f8);
+  --r2: radial-gradient(farthest-side at top, #f8f8f8 93%, #f8f8f8);
+  background:
+    var(--c), var(--r1), var(--r2),
+    var(--c), var(--r1), var(--r2),
+    var(--c), var(--r1), var(--r2);
+  background-repeat: no-repeat;
+  animation: l1 1s infinite alternate;
+}
+
+@keyframes l1 {
+
+  0%,
+  10% {
+    background-size: 8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+  }
+
+  90%,
+  100% {
+    background-size: 8px 100%, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 -2px, 0 calc(100% + 2px), 50% 50%, 50% -2px, 50% calc(100% + 2px), 100% 50%, 100% -2px, 100% calc(100% + 2px);
+  }
+}
