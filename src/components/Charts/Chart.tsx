@@ -7,6 +7,7 @@ import { Line } from 'react-chartjs-2';
 import type { WeatherParams } from "../../api/openmeteo/openmeteo.types";
 import useWeather from "../../hooks/useWeather";
 import Loader from '../ui/Loader';
+import useFormatDate from "../../hooks/useFormatDate";
 
 interface ChartProps {
   city: string,
@@ -25,44 +26,13 @@ const Chart = ({ city, WeatherParams }: ChartProps,) => {
   if (error) return <div className="chart">Ошибка: {error.message}</div>;
   if (!weatherData) return <div className="chart">Нет данных</div>;
 
-  const getProccesedData = () => {
-    const result: { time: string[], temperature: number[] } = {
-      time: [],
-      temperature: [],
-    };
-
-    if (forecastDays === 1) {
-      const now = new Date();
-      const Ago24H = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
-      weatherData.hourly.time.forEach((time, index) => {
-        const date = new Date(time);
-        if (date >= Ago24H && date <= now) {
-          result.time.push(time);
-          result.temperature.push(weatherData.hourly.temperature_2m[index]);
-        }
-      });
-    }
-    if (forecastDays === 3) {
-      result.time = (weatherData.hourly.time).slice(24);
-      result.temperature = (weatherData.hourly.temperature_2m).slice(24);
-    }
-
-    if (forecastDays === 7) {
-      result.time = (weatherData.hourly.time).slice(24);;
-      result.temperature = (weatherData.hourly.temperature_2m).slice(24);
-    }
-
-    return result;
-  };
-
-  const proccedData = getProccesedData()
+  const {time,temperature} = useFormatDate(weatherData.hourly.time, weatherData.hourly.temperature_2m, forecastDays);
 
   const chartData = {
-    labels: proccedData?.time,
+    labels: time,
     datasets: [{
       label: 'Температура (°C)',
-      data: proccedData?.temperature,
+      data: temperature,
       borderColor: 'rgba(20, 98, 64, 1)',
       backgroundColor: 'rgba(20, 98, 64, 1)',
       borderWidth: 1,
