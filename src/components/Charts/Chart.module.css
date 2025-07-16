@@ -1,0 +1,51 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 15px;
+  min-height: 300px;
+  background: rgba(40, 40, 40, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(63, 63, 63, 0.18);
+  box-shadow: 0px 0px 15px 5px rgb(38 38 38 / 50%);
+  border-radius: 7px;
+  gap: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.buttonGroup button {
+  flex: 1;
+  padding: 3px;
+  border-radius: 7px;
+  background: none;
+  border: 1px solid #146240;
+  color: #f8f8f8;
+}
+
+.buttonGroup button:hover {
+  background: rgba(20, 98, 64, 0.5);
+}
+
+
+.buttonGroup button.active {
+  border: 1px solid #14624080;
+  background: #14624080;
+}
+
+@media (max-width: 768px) {
+  .charts {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .chart {
+    padding: 10px;
+  }
+}

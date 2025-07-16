@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles  from './Chart.module.css'
 
 //Библиотека chart.js + react chart.js для отрисовки графиков 
 import 'chart.js/auto';
@@ -22,9 +23,9 @@ const Chart = ({ city, WeatherParams }: ChartProps,) => {
 
   const { weatherData, error, loading } = useWeather({ ...WeatherParams, forecast_days: forecastDays });
 
-  if (loading) return <div className="chart"><Loader /></div>;
-  if (error) return <div className="chart">Ошибка: {error.message}</div>;
-  if (!weatherData) return <div className="chart">Нет данных</div>;
+  if (loading) return <div className={styles.chart}><Loader /></div>;
+  if (error) return <div className={styles.chart}>Ошибка: {error.message}</div>;
+  if (!weatherData) return <div className={styles.chart}>Нет данных</div>;
 
   const {time,temperature} = useFormatDate(weatherData.hourly.time, weatherData.hourly.temperature_2m, forecastDays);
 
@@ -33,24 +34,24 @@ const Chart = ({ city, WeatherParams }: ChartProps,) => {
     datasets: [{
       label: 'Температура (°C)',
       data: temperature,
-      borderColor: 'rgba(20, 98, 64, 1)',
-      backgroundColor: 'rgba(20, 98, 64, 1)',
+      borderColor: '#146240',
+      backgroundColor: '#146240',
       borderWidth: 1,
-      tension: 1,
+      tension: 0.85,
       pointRadius: 1,
       pointHoverRadius: 3,
     }]
   };
 
   return (
-    <div className="chart">
+    <div className={styles.chart}>
       <h2>{city}</h2>
       <span>{forecastDays === 1 ? 'За последние 24 часа' : forecastDays === 3 ? 'На 3 дня' : 'На 7 дней'}</span>
       <Line data={chartData} />
-      <div className="buttonGroup">
+      <div className={styles.buttonGroup}>
         {PERIOD_WEATHER.map(period => (
           <button
-            className={forecastDays === period ? 'active' : ''}
+            className={forecastDays === period ? styles.active : ''}
             onClick={() => setForecastDays(period)}
             key={period}
           >

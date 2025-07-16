@@ -15,20 +15,20 @@ const WeatherPage = () => {
       }
     },
     {
-      city : "Казань",
+      city : "Москва",
       queryParams: {
-        latitude: 54.54,
-        longitude: 30.18,
+        latitude: 55.55,
+        longitude: 37.36,
         hourly: "temperature_2m",
         forecast_days: 1,
         past_days: 1,
       }
     },
     {
-      city : "Заинск",
+      city : "Нью-Йорк",
       queryParams: {
-        latitude: 54.54,
-        longitude: 10.18,
+        latitude: 40.43,
+        longitude: 73.59,
         hourly: "temperature_2m",
         forecast_days: 1,
         past_days: 1,

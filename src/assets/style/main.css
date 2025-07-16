@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 
 * {
-  font-family: "Tuffy", sans-serif;
-  padding: 0px;
-  margin: 0px;
-  list-style: none;
+  font-family: "Nunito Sans", sans-serif;
   transition: .3s all;
 }
 
@@ -28,58 +26,6 @@ main {
   display: flex;
   gap: 30px;
 }
-
-.chart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  padding: 15px;
-  min-height: 300px;
-  background: rgba(191, 191, 191, 0.050);
-  /* opacity: 60%; */
-  border-radius: 7px;
-  gap: 10px;
-}
-
-.buttonGroup {
-  display: flex;
-  gap: 15px;
-  width: 100%;
-}
-
-.buttonGroup button {
-  flex: 1;
-  padding: 3px;
-  border-radius: 7px;
-  background: none;
-  border: 1px solid rgba(20, 98, 64, 1);
-  color: #f8f8f8;
-}
-
-.buttonGroup button:hover {
-  background: rgba(20, 98, 64, 0.5);
-}
-
-
-.buttonGroup button.active {
-  background: rgba(20, 98, 64, 1);
-}
-
-@media (max-width: 768px) {
-  .charts {
-    gap: 20px;
-    flex-direction: column;
-  }
-
-  .chart {
-    padding: 10px;
-  }
-}
-
-/* LOADER */
-
 
 /* HTML: <div class="loader"></div> */
 .loader {
