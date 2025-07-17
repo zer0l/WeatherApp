@@ -24,7 +24,7 @@ const Chart = ({ city, WeatherParams }: ChartProps,) => {
   const { weatherData, error, loading } = useWeather({ ...WeatherParams, forecast_days: forecastDays });
 
   if (loading) return <div className={styles.chart}><Loader /></div>;
-  if (error) return <div className={styles.chart}>Ошибка: {error.message}</div>;
+  if (error) return <div className={styles.chart}>{error.message}</div>;
   if (!weatherData) return <div className={styles.chart}>Нет данных</div>;
 
   const {time,temperature} = useFormatDate(weatherData.hourly.time, weatherData.hourly.temperature_2m, forecastDays);
